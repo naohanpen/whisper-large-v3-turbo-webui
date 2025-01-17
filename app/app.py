@@ -682,7 +682,7 @@ def transcribe_finalize_helper(async_mode=False):
             # 文字起こし結果を読み取って返す
             transcription_path = os.path.join('transcriptions', f'{transcription_id}.txt')
             with open(transcription_path, 'r', encoding='utf-8') as f:
-                transcription_text = f.read()
+                transcription_text = f.readline().strip() + '。'
             return jsonify({"transcription": transcription_text, "id": transcription_id})
     except Exception as e:
         return jsonify({"error": f"文字起こし中にエラーが発生しました: {str(e)}"}), 500
