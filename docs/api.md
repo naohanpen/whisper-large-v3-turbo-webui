@@ -150,7 +150,7 @@ Whisper Turbo Transcription の REST API ドキュメントです。
 }
 ```
 
-> **注意:** `device`, `language`, `translate` はフォームフィールドとして送信します（`Content-Type` はリクエストボディ部分が JSON ですが、これらはクエリ等で補完されます）。
+> **注意:** `device`, `language`, `translate` はこのエンドポイントに送信する必要はありません。サーバー側でデフォルト値（`device`: 自動選択、`language`: `auto`、`translate`: `false`）が使用されます。
 
 ### レスポンス
 
@@ -200,7 +200,8 @@ Whisper Turbo Transcription の REST API ドキュメントです。
 
 ## GET /status/:task_id
 
-非同期タスクの進行状況を取得します。ポーリングで繰り返し呼び出してください。
+非同期タスクの進行状況を取得します。ポーリングで繰り返し呼び出してください。  
+推奨ポーリング間隔は **5秒** です。
 
 ### パスパラメータ
 
